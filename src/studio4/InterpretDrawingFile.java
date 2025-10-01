@@ -3,6 +3,7 @@ package studio4;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.awt.Color;
 
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
@@ -20,5 +21,25 @@ public class InterpretDrawingFile {
 		File f = new File(chooser.getSelectedFile().getPath());
 		Scanner in = new Scanner(f); //making Scanner with a File
 		
+		String shape = in.next();
+		int r = in.nextInt();
+		int g = in.nextInt();
+		int b = in.nextInt();
+		boolean isFilled = in.nextBoolean();
+
+		if (shape.equals( "rectange") || (shape.equals("ellipse"))) {
+
+
+			double x = in.nextDouble();
+			double y = in.nextDouble();
+			double halfWidth = in.nextDouble();
+			double halfHeight = in.nextDouble();
+
+			if (shape.equals( "rectange")) {
+				StdDraw.filledRectangle(x, y, halfWidth, halfHeight);
+			} else {
+				StdDraw.filledEllipse(x, y, r, x);
+			}
+		}
 	}
 }
